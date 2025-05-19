@@ -182,7 +182,21 @@ def modify_account(current_user):
 
   
     customer_id = current_user [0]
-    new_email = input("Enter new email: ")
+    while True:
+        choice = input('Are you modifying your email or password? ')
+        if choice not in['email', 'password']:
+            print('Invalid input. Please input the correct choice.')
+            continue 
+        if choice == 'email':
+            new_email = input("Enter new email: ")
+            cursor.execute("UPDATE customer SET email = %s WHERE id = %s", (new_email, customer_id))
+            print("Email updated.")
+            break
+        else:    
+            new_password = input('Enter new password: ')
+            cursor.execute("UPDATE customer SET password = %s WHERE id = %s", (new_password, customer_id))
+            print("Password updated")
+            break
 
     cursor.close()
     conn.close()
