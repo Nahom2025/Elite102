@@ -14,6 +14,9 @@ print('Connection successful!')
 
 def return_to_menu():
     choice = input('Go back to main menu? (Y/N): ')
+    if choice not in ['Y', 'Yes', 'No', 'N']:
+        print('Wrong input. I has to be a Yes or No.')
+        return return_to_menu()
     if choice in ['N', 'No']:
         print('Goodbye! ')
         exit()
@@ -133,7 +136,12 @@ def withdraw_funds(current_user):
 
 
     customer_id = current_user [0]
-    amount = float(input("Amount to withdraw: "))
+    while True:
+        try:
+            amount = float(input("Amount to withdraw: "))
+            break
+        except ValueError:
+            print('Invalid input. Please enter a calid number! ')
     decimal_points = 2 
     formatted_float = "{:.{}f}".format(amount, decimal_points)#formats the amount into a string with exactly 2 decimal places 
     query = "INSERT INTO transactions (customer_id, amount, type, date) VALUES (%s, %s, 'withdraw', NOW())"
