@@ -9,6 +9,8 @@ Project description for student: You will create an online banking program in th
     *Check balance, 
     *Deposit 
     *Withdraw
+    *Modifying account
+    *Exit
 
-*Modify an account (such as edit name, PIN, email, password (maybe) etc.)
+*Modify an account (such email and password)
 *Administrator functions 

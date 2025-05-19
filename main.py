@@ -184,9 +184,6 @@ def modify_account(current_user):
     customer_id = current_user [0]
     new_email = input("Enter new email: ")
 
-    cursor.execute("UPDATE customer SET email = %s WHERE id = %s", (new_email, customer_id))
-    print("Email updated.")
-        
     cursor.close()
     conn.close()
     print()
